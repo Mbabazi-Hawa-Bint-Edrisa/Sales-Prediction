@@ -28,7 +28,7 @@ def predict_datapoint():
             Outlet_Size = request.form.get('Outlet_Size'),
             Outlet_Location_Type = request.form.get('Outlet_Location_Type'),
             Outlet_Type = request.form.get('Outlet_Type'),
-            Outlet_Age = request.form.get('Outlet_Age')
+            # Outlet_Age = request.form.get('Outlet_Age')
             
             )
 
