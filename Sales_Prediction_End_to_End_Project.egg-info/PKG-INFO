@@ -1,8 +1,7 @@
-Metadata-Version: 2.1
-Name: Sales-Prediction-End-to-End-Project
-Version: 0.0.1
-Author: Ayodele Ayodeji
-Author-email: ayodeleayodeji250@gmail.com
+
+Name: Supermarket-Sales-Prediction-End-to-End-Project
+Author: Mbabazi Hawa Bint Edrisa
+Author-email: mbabaziedrisa0@gmail.com
 Requires-Dist: pandas
 Requires-Dist: numpy
 Requires-Dist: seaborn

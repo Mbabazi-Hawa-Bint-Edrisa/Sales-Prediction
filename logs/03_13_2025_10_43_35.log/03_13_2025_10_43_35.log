@@ -1,0 +1,9 @@
+[ 2025-03-13 10:43:35,778 ] 96 werkzeug - WARNING -  * Debugger is active!
+[ 2025-03-13 10:43:35,791 ] 96 werkzeug - INFO -  * Debugger PIN: 101-804-403
+[ 2025-03-13 10:44:02,996 ] 96 werkzeug - INFO - 127.0.0.1 - - [13/Mar/2025 10:44:02] "GET / HTTP/1.1" 200 -
+[ 2025-03-13 10:44:04,945 ] 96 werkzeug - INFO - 127.0.0.1 - - [13/Mar/2025 10:44:04] "[33mGET /static/Sales%20Prediction%20demo.webm HTTP/1.1[0m" 404 -
+[ 2025-03-13 10:44:10,032 ] 96 werkzeug - INFO - 127.0.0.1 - - [13/Mar/2025 10:44:10] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+[ 2025-03-13 10:45:09,594 ] 96 werkzeug - INFO - 127.0.0.1 - - [13/Mar/2025 10:45:09] "GET /predictdata HTTP/1.1" 200 -
+[ 2025-03-13 10:45:09,915 ] 96 werkzeug - INFO - 127.0.0.1 - - [13/Mar/2025 10:45:09] "[33mGET /static/css/styles.css HTTP/1.1[0m" 404 -
+[ 2025-03-13 10:45:20,071 ] 96 werkzeug - INFO - 127.0.0.1 - - [13/Mar/2025 10:45:20] "GET / HTTP/1.1" 200 -
+[ 2025-03-13 10:45:20,307 ] 96 werkzeug - INFO - 127.0.0.1 - - [13/Mar/2025 10:45:20] "[33mGET /static/Sales%20Prediction%20demo.webm HTTP/1.1[0m" 404 -

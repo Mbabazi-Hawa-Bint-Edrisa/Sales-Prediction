@@ -1,0 +1,179 @@
+Model Results
+
+Linear Regression
+Model performance for Training set
+- Root Mean Squared Error: 0.7370
+- Mean Absolute Error: 0.5492
+- R2 Score: 0.4338
+----------------------------------
+Model performance for Test set
+- Root Mean Squared Error: 0.8273
+- Mean Absolute Error: 0.6395
+- R2 Score: 0.4099
+===================================
+
+Lasso
+Model performance for Training set
+- Root Mean Squared Error: 0.9795
+- Mean Absolute Error: 0.7790
+- R2 Score: 0.0000
+----------------------------------
+Model performance for Test set
+- Root Mean Squared Error: 1.0771
+- Mean Absolute Error: 0.8825
+- R2 Score: -0.0002
+===================================
+
+Ridge
+Model performance for Training set
+- Root Mean Squared Error: 0.7385
+- Mean Absolute Error: 0.5485
+- R2 Score: 0.4316
+----------------------------------
+Model performance for Test set
+- Root Mean Squared Error: 0.8292
+- Mean Absolute Error: 0.6424
+- R2 Score: 0.4072
+===================================
+
+K-Neighbors Regressor
+Model performance for Training set
+- Root Mean Squared Error: 0.6699
+- Mean Absolute Error: 0.5138
+- R2 Score: 0.5323
+----------------------------------
+Model performance for Test set
+- Root Mean Squared Error: 0.9260
+- Mean Absolute Error: 0.7009
+- R2 Score: 0.2608
+===================================
+
+Decision Tree
+Model performance for Training set
+- Root Mean Squared Error: 0.0000
+- Mean Absolute Error: 0.0000
+- R2 Score: 1.0000
+----------------------------------
+Model performance for Test set
+- Root Mean Squared Error: 1.0944
+- Mean Absolute Error: 0.8224
+- R2 Score: -0.0325
+===================================
+
+Random Forest Regressor
+Model performance for Training set
+- Root Mean Squared Error: 0.3300
+- Mean Absolute Error: 0.2424
+- R2 Score: 0.8865
+----------------------------------
+Model performance for Test set
+- Root Mean Squared Error: 0.8434
+- Mean Absolute Error: 0.6491
+- R2 Score: 0.3868
+===================================
+
+XGBRegressor
+Model performance for Training set
+- Root Mean Squared Error: 0.0223
+- Mean Absolute Error: 0.0148
+- R2 Score: 0.9995
+----------------------------------
+Model performance for Test set
+- Root Mean Squared Error: 1.0663
+- Mean Absolute Error: 0.7883
+- R2 Score: 0.0198
+===================================
+
+CatBoosting Regressor
+Model performance for Training set
+- Root Mean Squared Error: 0.2755
+- Mean Absolute Error: 0.2018
+- R2 Score: 0.9209
+----------------------------------
+Model performance for Test set
+- Root Mean Squared Error: 0.9156
+- Mean Absolute Error: 0.6942
+- R2 Score: 0.2772
+===================================
+
+AdaBoost Regressor
+Model performance for Training set
+- Root Mean Squared Error: 0.6928
+- Mean Absolute Error: 0.5363
+- R2 Score: 0.4997
+----------------------------------
+Model performance for Test set
+- Root Mean Squared Error: 0.8749
+- Mean Absolute Error: 0.6674
+- R2 Score: 0.3401
+===================================
+
+RESULTS EXPLANATION
+
+Linear Regression
+Training: RMSE: 0.7370, MAE: 0.5492, R²: 0.4338
+Test: RMSE: 0.8273, MAE: 0.6395, R²: 0.4099
+Interpretation: Linear Regression performs best overall, with a test R² of 0.4099, meaning it explains 40.99%
+of the variance in the test data. The small gap between training and test R² (0.4338 vs. 0.4099) 
+indicates good generalization with minimal overfitting. However, there’s still room for improvement, 
+as 59% of the variance remains unexplained.
+
+Lasso
+Training: RMSE: 0.9795, MAE: 0.7790, R²: 0.0000
+Test: RMSE: 1.0771, MAE: 0.8825, R²: -0.0002
+Interpretation: Lasso severely underfits, with an R² of 0.0000 on training and a slightly negative 
+R² on test, performing worse than a mean predictor. The default alpha (regularization strength)
+is likely too high, shrinking coefficients excessively. Tuning alpha with LassoCV could help.
+
+Ridge
+Training: RMSE: 0.7385, MAE: 0.5485, R²: 0.4316
+Test: RMSE: 0.8292, MAE: 0.6424, R²: 0.4072
+Interpretation: Ridge performs almost as well as Linear Regression, with a test R² of 0.4072.
+The metrics are very close to Linear Regression, suggesting that L2 regularization (used in Ridge)
+doesn’t significantly improve over the unregularized model in this case. This might indicate that
+multicollinearity isn’t a major issue in your dataset.
+
+K-Neighbors Regressor
+Training: RMSE: 0.6699, MAE: 0.5138, R²: 0.5323
+Test: RMSE: 0.9260, MAE: 0.7009, R²: 0.2608
+Interpretation: K-Neighbors performs well on training (R²: 0.5323) but drops significantly on test 
+(R²: 0.2608), indicating overfitting. This model relies on distance metrics, so feature scaling 
+(e.g., standardization) could improve its performance.
+
+Decision Tree
+Training: RMSE: 0.0000, MAE: 0.0000, R²: 1.0000
+Test: RMSE: 1.0944, MAE: 0.8224, R²: -0.0325
+Interpretation: Decision Tree achieves a perfect fit on training (R²: 1.0), but its test R² is negative 
+(-0.0325), indicating severe overfitting. The model is too complex (likely due to unlimited depth), 
+memorizing the training data but failing to generalize. Pruning the tree(e.g., setting max_depth) 
+could help.
+Random Forest Regressor
+
+Training: RMSE: 0.3300, MAE: 0.2424, R²: 0.8865
+Test: RMSE: 0.8434, MAE: 0.6491, R²: 0.3868
+Interpretation: Random Forest performs very well on training (R²: 0.8865) but drops to 0.3868 on test, 
+indicating overfitting. However, its test R² is the third-highest, suggesting it captures non-linear 
+patterns better than Linear Regression. Tuning hyperparameters (e.g., n_estimators, max_depth) could 
+reduce overfitting and improve test performance.
+
+XGBRegressor
+Training: RMSE: 0.0223, MAE: 0.0148, R²: 0.9995
+Test: RMSE: 1.0663, MAE: 0.7883, R²: 0.0198
+Interpretation: XGBoost overfits dramatically, with a near-perfect training R² (0.9995) but a very low 
+test R² (0.0198). This suggests the model is too complex for the data. Adjusting parameters like 
+learning_rate, max_depth, and n_estimators could improve generalization.
+
+CatBoosting Regressor
+Training: RMSE: 0.2755, MAE: 0.2018, R²: 0.9209
+Test: RMSE: 0.9156, MAE: 0.6942, R²: 0.2772
+Interpretation: CatBoost performs well on training (R²: 0.9209) but drops to 0.2772 on test, indicating 
+overfitting. Its test R² is better than XGBoost but worse than Random Forest. CatBoost handles
+categorical features well, so ensuring proper encoding (already done with one-hot encoding) and tuning 
+parameters (e.g., depth, iterations) could help.
+
+AdaBoost Regressor
+Training: RMSE: 0.6928, MAE: 0.5363, R²: 0.4997
+Test: RMSE: 0.8749, MAE: 0.6674, R²: 0.3401
+Interpretation: AdaBoost has a moderate training R² (0.4997) and a decent test R² (0.3401), showing 
+less overfitting than Random Forest or CatBoost. Its performance is solid but not the best.
+ Tuning n_estimators and learning_rate could improve results.
