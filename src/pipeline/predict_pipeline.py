@@ -1,70 +1,45 @@
-import sys
+import numpy as np
 import pandas as pd
-from src.exception import CustomException
-from src.utils import load_object
-import os
+import joblib
 
+class CustomData:
+    def __init__(self, Item_Weight, Item_Fat_Content, Item_Type, Item_MRP, Outlet_Establishment_Year, Outlet_Location, Outlet_Type):
+        self.Item_Weight = float(Item_Weight)
+        self.Item_Fat_Content = Item_Fat_Content
+        self.Item_Type = Item_Type
+        self.Item_MRP = float(Item_MRP)
+        self.Outlet_Establishment_Year = float(Outlet_Establishment_Year)
+        self.Outlet_Age = 2025 - self.Outlet_Establishment_Year
+        self.Outlet_Location = Outlet_Location
+        self.Outlet_Type = 'Supermarket' if Outlet_Type == 'Supermarket Type1' else Outlet_Type
+
+    def get_data_as_data_frame(self):
+        data = {
+            'Item_Weight': [self.Item_Weight],
+            'Item_Fat_Content': [self.Item_Fat_Content],
+            'Item_Type': [self.Item_Type],
+            'Item_MRP': [self.Item_MRP],
+            'Outlet_Age': [self.Outlet_Age],
+            'Outlet_Location': [self.Outlet_Location],
+            'Outlet_Type': [self.Outlet_Type]
+        }
+        return pd.DataFrame(data)
 
 class PredictPipeline:
     def __init__(self):
-        pass
+        self.pipeline = joblib.load(r'C:\Users\USER\Desktop\sales pred\artifacts\model.pkl')
 
-    def predict(self,features):
-        try:
-            model_path=os.path.join("artifacts","model.pkl")
-            preprocessor_path=os.path.join("artifacts","preprocessor.pkl")
-            model=load_object(file_path=model_path)
-            preprocessor=load_object(file_path=preprocessor_path)
-            data_scaled=preprocessor.transform(features)
-            preds=model.predict(data_scaled)
-            return preds
+    def predict(self, df):
+        # Add Is_High_Fat
+        df['Is_High_Fat'] = df['Item_Fat_Content'].apply(lambda x: 1 if x == 'Regular' else 0)
         
-        except Exception as e:
-            raise CustomException(e,sys)
+        # Log transform Item_MRP
+        df['Item_MRP_log'] = np.log1p(df['Item_MRP'])
 
+        # Reorder columns to match training
+        df = df[['Item_Weight', 'Item_MRP_log', 'Outlet_Age', 'Is_High_Fat', 'Item_Fat_Content', 'Item_Type', 'Outlet_Location', 'Outlet_Type']]
 
-class CustomData:
-    def __init__(  self,
-        Item_Weight: float,
-        Item_Fat_Content: str,
-        Item_Type: str,
-        Item_MRP : float,
-        Outlet_Size: str,
-        Outlet_Location_Type: str,
-        Outlet_Type: str,
-        Outlet_Age: int
-        ):
-
-        self.Item_Weight = Item_Weight
-
-        self.Item_Fat_Content = Item_Fat_Content
-
-        self.Item_Type = Item_Type
-
-        self.Item_MRP = Item_MRP
-
-        self. Outlet_Size =  Outlet_Size
-
-        self.Outlet_Location_Type = Outlet_Location_Type
-
-        self.Outlet_Type = Outlet_Type
-
-        self.Outlet_Age = Outlet_Age
-        
-    def get_data_as_data_frame(self):
-        try:
-            custom_data_input_dict = {
-                "Item_Weight": [self.Item_Weight],
-                "Item_Fat_Content": [self.Item_Fat_Content],
-                "Item_Type": [self.Item_Type],
-                "Item_MRP": [self.Item_MRP],
-                "Outlet_Size": [self.Outlet_Size],
-                "Outlet_Location_Type": [self.Outlet_Location_Type],
-                "Outlet_Type": [self.Outlet_Type],
-                "Outlet_Age": [self.Outlet_Age],                            
-            }
-
-            return pd.DataFrame(custom_data_input_dict)
-
-        except Exception as e:
-            raise CustomException(e, sys)
+        # Predict using the pipeline (handles preprocessing and prediction)
+        pred_log = self.pipeline.predict(df)[0]
+        pred_ugx = np.expm1(pred_log)  # Convert back to UGX
+        return [pred_ugx]

@@ -1,0 +1,8 @@
+[ 2025-03-26 16:57:16,526 ] 96 werkzeug - INFO - 127.0.0.1 - - [26/Mar/2025 16:57:16] "POST /predictdata HTTP/1.1" 200 -
+[ 2025-03-26 16:57:17,291 ] 96 werkzeug - INFO - 127.0.0.1 - - [26/Mar/2025 16:57:17] "[33mGET /static/css/styles.css HTTP/1.1[0m" 404 -
+[ 2025-03-26 16:58:24,397 ] 96 werkzeug - INFO - 127.0.0.1 - - [26/Mar/2025 16:58:24] "POST /predictdata HTTP/1.1" 200 -
+[ 2025-03-26 16:58:24,665 ] 96 werkzeug - INFO - 127.0.0.1 - - [26/Mar/2025 16:58:24] "[33mGET /static/css/styles.css HTTP/1.1[0m" 404 -
+[ 2025-03-26 16:59:01,820 ] 96 werkzeug - INFO - 127.0.0.1 - - [26/Mar/2025 16:59:01] "POST /predictdata HTTP/1.1" 200 -
+[ 2025-03-26 16:59:01,962 ] 96 werkzeug - INFO - 127.0.0.1 - - [26/Mar/2025 16:59:01] "[33mGET /static/css/styles.css HTTP/1.1[0m" 404 -
+[ 2025-03-26 16:59:57,078 ] 96 werkzeug - INFO - 127.0.0.1 - - [26/Mar/2025 16:59:57] "[33mGET /static/css/styles.css HTTP/1.1[0m" 404 -
+[ 2025-03-26 17:01:16,324 ] 96 werkzeug - INFO -  * Detected change in 'C:\\Users\\USER\\Desktop\\sales pred\\src\\pipeline\\predict_pipeline.py', reloading

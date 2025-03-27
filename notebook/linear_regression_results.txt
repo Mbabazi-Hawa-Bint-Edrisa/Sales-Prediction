@@ -1,0 +1,11 @@
+Linear Regression
+Model performance for Training set
+- Root Mean Squared Error: 0.7370
+- Mean Absolute Error: 0.5492
+- R2 Score: 0.4338
+----------------------------------
+Model performance for Test set
+- Root Mean Squared Error: 0.8274
+- Mean Absolute Error: 0.6396
+- R2 Score: 0.4098
+===================================

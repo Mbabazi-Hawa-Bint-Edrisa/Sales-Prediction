@@ -29,11 +29,8 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=get_requirements(os.path.join(os.path.dirname(__file__), 'requirements.txt')),
-    license='MIT',
     classifiers=[
         'Programming Language :: Python :: 3',
-        'License :: OSI Approved :: MIT License',
-        'Operating System :: OS Independent',
     ],
     python_requires='>=3.8',
 )

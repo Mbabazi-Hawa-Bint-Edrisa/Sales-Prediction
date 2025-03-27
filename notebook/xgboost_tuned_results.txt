@@ -1,0 +1,12 @@
+XGBRegressor (Tuned v3)
+Model performance for Training set
+- Root Mean Squared Error: 0.6832
+- Mean Absolute Error: 0.5069
+- R2 Score: 0.5135
+----------------------------------
+Model performance for Test set
+- Root Mean Squared Error: 0.8493
+- Mean Absolute Error: 0.6457
+- R2 Score: 0.3781
+===================================
+Best Parameters: {'colsample_bytree': 0.9, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 200, 'subsample': 1.0}

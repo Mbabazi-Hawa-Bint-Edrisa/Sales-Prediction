@@ -1,0 +1,6 @@
+[ 2025-03-20 14:11:40,651 ] 96 werkzeug - WARNING -  * Debugger is active!
+[ 2025-03-20 14:11:40,662 ] 96 werkzeug - INFO -  * Debugger PIN: 101-804-403
+[ 2025-03-20 14:12:01,024 ] 96 werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 14:12:01] "GET / HTTP/1.1" 200 -
+[ 2025-03-20 14:12:02,203 ] 96 werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 14:12:02] "[33mGET /static/Sales_Prediction_demo.webm HTTP/1.1[0m" 404 -
+[ 2025-03-20 14:12:04,092 ] 96 werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 14:12:04] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+[ 2025-03-20 14:13:02,581 ] 96 werkzeug - INFO -  * Detected change in 'C:\\Users\\USER\\Desktop\\sales pred\\app.py', reloading

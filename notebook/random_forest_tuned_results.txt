@@ -1,0 +1,12 @@
+Random Forest Regressor (Tuned)
+Model performance for Training set
+- Root Mean Squared Error: 0.6535
+- Mean Absolute Error: 0.4924
+- R2 Score: 0.5548
+----------------------------------
+Model performance for Test set
+- Root Mean Squared Error: 0.8710
+- Mean Absolute Error: 0.6769
+- R2 Score: 0.3460
+===================================
+Best Parameters: {'max_depth': 10, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 10, 'n_estimators': 150}
