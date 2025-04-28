@@ -1,161 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sales Prediction Dashboard</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f5f5f5;
-        margin: 0;
-        padding: 0;
-      }
-
-      header {
-        background-color: black;
-        color: #fff;
-        text-align: center;
-        padding: 20px;
-      }
-
-      h1 {
-        font-size: 36px;
-      }
-
-      section {
-        background-color: #fff;
-        padding: 20px;
-        margin: 20px;
-        border-radius: 5px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-      }
-
-      h2 {
-        font-size: 24px;
-      }
-
-      p {
-        font-size: 16px;
-        line-height: 1.5;
-      }
-
-      ul,
-      ol {
-        font-size: 16px;
-        line-height: 1.5;
-      }
-
-      a {
-        color: black;
-        text-decoration: none;
-      }
-
-      footer {
-        background-color: black;
-        color: #fff;
-        text-align: center;
-        padding: 10px;
-      }
-
-      .linkedin {
-        color: #fff;
-      }
-
-      /* Predict Button Styling */
-      #predict-button {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: black;
-        color: #fff;
-        text-decoration: none;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        margin: 20px;
-      }
-
-      #predict-button:hover {
-        background-color: rgb(236, 241, 238);
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <h1>Welcome to the Sales Prediction Dashboard</h1>
-    </header>
-
-    <a href="{{ url_for('predict_datapoint') }}" class="btn btn-primary" id="predict-button">Prediction Page</a>
-
-    <section>
-      <h2>About This Project</h2>
-      <p>
-        Sales Prediction Project, designed to help forecast supermarket sales,
-        this tool empowers Jamie's supermarkets with accurate sales forecasts in
-        UGX, enabling better inventory management and decision-making.
-      </p>
-    </section>
-
-    <section>
-      <h2>Key Features</h2>
-      <ul>
-        <li>Input Data Sales Predictions in UGX</li>
-        <li>Interactive Dashboard with Easy Navigation</li>
-        <li>Built with Flask for Seamless Integration</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>How to Use</h2>
-      <p>Follow these simple steps to use the Sales Prediction Dashboard:</p>
-      <ol>
-        <li>Click "Prediction Page" at the top left corner.</li>
-        <li>Enter product and outlet data in the form.</li>
-        <li>Click "Get Prediction" to receive a sales forecast in UGX.</li>
-        <li>Return to this dashboard for more information.</li>
-      </ol>
-    </section>
-
-    <section>
-      <h2>Input Features</h2>
-      <p>The features required for sales predictions are:</p>
-      <ol>
-        <li><strong>Item_Weight</strong>: Weight of the product (float, 4.56–21.35 kg).</li>
-        <li><strong>Item_Fat_Content</strong>: Low Fat or Regular (string, select from dropdown).</li>
-        <li><strong>Item_Type</strong>: Product category (string, e.g., Dairy, Soft Drinks, etc.).</li>
-        <li><strong>Item_MRP</strong>: Maximum Retail Price (float, 30,000–980,000 UGX).</li>
-        <li><strong>Outlet_Establishment_Year</strong>: Year the outlet was established (integer, 1985–2025).</li>
-        <li><strong>Outlet_Location</strong>: Kireka.</li>
-        <li><strong>Outlet_Type</strong>: Supermarket.</li>
-      </ol>
-    </section>
-
-    <section>
-      <h2>Real-time Demo</h2>
-      <video controls width="640" height="360">
-        <source src="" type="">
-        Your browser does not support the video tag.
-      </video>
-      
-    </section>
-
-    <section>
-      <h2>Explore the Code</h2>
-      <p>
-        Visit the
-        <a href="https://github.com/Mbabazi-Hawa-Bint-Edrisa/Sales-Prediction.git" target="_blank">GitHub repository</a>
-        to explore the code.
-      </p>
-    </section>
-
-    <footer>
-      <p>
-        © 2025 Mbabazi Hawa Bint Edrisa. Connect with me on
-        <a href="https://www.linkedin.com/in/mbabazi-edrisa-549604299/" target="_blank" class="linkedin">LinkedIn</a>
-      </p>
-    </footer>
-  </body>
+<html>
+<head>
+    <title>Sales Prediction</title>
+</head>
+<body>
+    <h1>Sales Prediction App</h1>
+    <form method="POST" action="/predict">
+        <label for="product">Select Product:</label>
+        <select name="product" id="product">
+            {% for product in products %}
+            <option value="{{ product }}">{{ product }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <label for="month">Select Future Month (1-12):</label>
+        <input type="number" name="month" id="month" min="1" max="12" required>
+        <br><br>
+        <button type="submit">Predict</button>
+    </form>
+</body>
 </html>

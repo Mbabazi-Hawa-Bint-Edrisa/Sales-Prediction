@@ -1,172 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sales Prediction</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
-
-    <!-- Custom Styles -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Prediction - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-      body {
-        background-color: white;
-        color: black;
-      }
-      .header, .footer {
-        background-color: black;
-        color: white;
-        text-align: center;
-        padding: 15px;
-      }
-      .form-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        min-height: 80vh;
-      }
-      .form-card {
-        background-color: #f8f9fa;
-        padding: 20px;
-        border-radius: 10px;
-        width: 400px;
-        text-align: center;
-      }
-      .form-title {
-        font-size: 24px;
-        margin-bottom: 20px;
-      }
-      .form-input {
-        margin-bottom: 15px;
-        text-align: left;
-      }
-      .form-input input, .form-input select {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid black;
-        border-radius: 5px;
-        background-color: white;
-        color: black;
-      }
-      select:focus, input:focus {
-        background-color: white !important;
-        color: black !important;
-      }
-      .predict-button {
-        background-color: black;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        width: 100%;
-        font-size: 18px;
-        cursor: pointer;
-      }
-      .predict-button:hover {
-        background-color: #333;
-      }
-      .back-home {
-        margin-top: 10px;
-        display: inline-block;
-        background-color: black;
-        color: white;
-        padding: 10px 15px;
-        text-decoration: none;
-        border-radius: 5px;
-      }
-      .back-home:hover {
-        background-color: #333;
-      }
+        body {
+            background-color: #f4f4f9;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin-top: 50px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            color: #333;
+        }
+        .form-section {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        .form-group label {
+            font-weight: bold;
+            color: #333;
+        }
+        .form-control, .form-select {
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #777;
+        }
     </style>
-  </head>
-  <body>
-    <!-- Header -->
-    <div class="header">
-      <h1>Sales Prediction</h1>
-    </div>
-
-    <!-- Form Container -->
-    <div class="container form-container">
-      <div class="form-card">
-        <h2 class="form-title">Input features and get prediction</h2>
-        <form action="{{ url_for('predict_datapoint') }}" method="post">
-          <div class="form-input">
-            <h6>What is the Item Weight? (4.56 - 21.35)</h6>
-            <input type="number" name="Item_Weight" min="4.56" max="21.35" step="0.01" placeholder="Enter a number" class="form-control" required />
-          </div>
-          
-          <div class="form-input">
-            <h6>Low Fat or Regular?</h6>
-            <select name="Item_Fat_Content" class="form-control" required>
-              <option value="" disabled selected>Choose Fat Content</option>
-              <option value="Low Fat">Low Fat</option>
-              <option value="Regular">Regular</option>
-            </select>
-          </div>
-
-          <div class="form-input">
-            <h6>Product Category</h6>
-            <select name="Item_Type" class="form-control" required>
-              <option value="" disabled selected>Choose Category</option>
-              <option value="Dairy">Dairy</option>
-              <option value="Soft Drinks">Soft Drinks</option>
-              <option value="Meat">Meat</option>
-              <option value="Fruits and Vegetables">Fruits and Vegetables</option>
-              <option value="Household">Household</option>
-              <option value="Baking Goods">Baking Goods</option>
-              <option value="Snack Foods">Snack Foods</option>
-              <option value="Frozen Foods">Frozen Foods</option>
-              <option value="Breakfast">Breakfast</option>
-              <option value="Health and Hygiene">Health and Hygiene</option>
-              <option value="Hard Drinks">Hard Drinks</option>
-              <option value="Canned">Canned</option>
-              <option value="Breads">Breads</option>
-              <option value="Starchy Foods">Starchy Foods</option>
-              <option value="Seafood">Seafood</option>
-            </select>
-          </div>
-
-          <div class="form-input">
-            <h6>Product Retail Price? (UGX)</h6>
-            <input type="number" name="Item_MRP" min="31000" max="980000" step="1" placeholder="Enter a number (in UGX)" class="form-control" required />
-          </div>
-          
-          <div class="form-input">
-            <h6>Supermarket establishment year</h6>
-            <input type="number" name="Outlet_Establishment_Year" min="1985" max="2025" step="1" placeholder="Enter a year" class="form-control" required />
-          </div>
-          
-          <div class="form-input">
-            <h6>Supermarket Location</h6>
-            <input name="Outlet_Location" placeholder="Enter location" class="form-control" required />
-          </div>
-          
-          <div class="form-input">
-            <h6>Outlet Type</h6>
-            <input name="Outlet_Type" placeholder="Supermarket" class="form-control" required />
-          </div>
-
-          <div class="form-input">
-            <input type="submit" value="Get Prediction" class="btn btn-primary predict-button" />
-          </div>
-        </form>
-
-        <!-- Display the prediction result -->
-        {% if results %}
-        <div class="mt-4 alert alert-info">
-          <h3>Prediction Result:</h3>
-          <p>{{ results }}</p>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Sales Prediction System</h1>
+            <p>Predict your sales amount with ease.</p>
         </div>
-        {% endif %}
 
-        <a href="{{ url_for('index') }}" class="back-home">Back to Home</a>
-      </div>
+        <div class="form-section">
+            <h2>Enter Product Details</h2>
+            <form action="{{ url_for('predict') }}" method="post">
+                <div class="form-group mb-3">
+                    <label for="product_name">Product Name:</label>
+                    <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Enter product name" required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="unit_name">Unit Name:</label>
+                    <input type="text" class="form-control" id="unit_name" name="unit_name" placeholder="Enter unit name" required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="month">Month:</label>
+                    <select class="form-select" id="month" name="month" required>
+                        <option value="" disabled selected>Select month</option>
+                        <option value="January">January</option>
+                        <option value="February">February</option>
+                        <option value="March">March</option>
+                        <option value="April">April</option>
+                        <option value="May">May</option>
+                        <option value="June">June</option>
+                        <option value="July">July</option>
+                        <option value="August">August</option>
+                        <option value="September">September</option>
+                        <option value="October">October</option>
+                        <option value="November">November</option>
+                        <option value="December">December</option>
+                    </select>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="rate">Rate:</label>
+                    <input type="number" step="0.01" class="form-control" id="rate" name="rate" placeholder="Enter rate" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Predict Sales</button>
+            </form>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2025 Sales Prediction System. All rights reserved.</p>
+        </div>
     </div>
 
-    <!-- Footer -->
-    <div class="footer">
-      <p>Mbabazi-Hawa-Bint-Edrisa</p>
-    </div>
-  </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
